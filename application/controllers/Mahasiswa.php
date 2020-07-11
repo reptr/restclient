@@ -17,6 +17,7 @@ class Mahasiswa extends CI_Controller
             $data['mahasiswa'] = $this->Mahasiswa_model->cariDataMahasiswa();
         }
         $this->load->view('templates/header', $data);
+        $this->load->view('templates/navbar', $data);
         $this->load->view('mahasiswa/index', $data);
         $this->load->view('templates/footer');
     }
@@ -31,6 +32,7 @@ class Mahasiswa extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar', $data);
             $this->load->view('mahasiswa/tambah');
             $this->load->view('templates/footer');
         } else {
@@ -52,6 +54,7 @@ class Mahasiswa extends CI_Controller
         $data['judul'] = 'Detail Data Mahasiswa';
         $data['mahasiswa'] = $this->Mahasiswa_model->getMahasiswaById($id);
         $this->load->view('templates/header', $data);
+        $this->load->view('templates/navbar', $data);
         $this->load->view('mahasiswa/detail', $data);
         $this->load->view('templates/footer');
     }
@@ -60,7 +63,7 @@ class Mahasiswa extends CI_Controller
     {
         $data['judul'] = 'Form Ubah Data Mahasiswa';
         $data['mahasiswa'] = $this->Mahasiswa_model->getMahasiswaById($id);
-        $data['jurusan'] = ['Teknik Informatika', 'Teknik Mesin', 'Teknik Planologi', 'Teknik Pangan', 'Teknik Lingkungan'];
+        $data['jurusan'] = ['Teknik Informatika', 'Teknik Industri', 'Teknik Kimia', 'Teknik Perminyakan', 'Teknik Lingkungan'];
 
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('nrp', 'NRP', 'required|numeric');
@@ -68,6 +71,7 @@ class Mahasiswa extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar', $data);
             $this->load->view('mahasiswa/ubah', $data);
             $this->load->view('templates/footer');
         } else {
